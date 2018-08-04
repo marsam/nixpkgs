@@ -18197,6 +18197,8 @@ with pkgs;
 
   speedread = callPackage ../applications/misc/speedread { };
 
+  spotifyd = callPackage ../applications/audio/spotifyd { };
+
   sup = callPackage ../applications/networking/mailreaders/sup {
     ruby = ruby_2_3.override { cursesSupport = true; };
   };
