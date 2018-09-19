@@ -9,6 +9,8 @@ stdenv.mkDerivation rec {
     sha256 = "1ppippbpdpv13ibs06b0bixnazwfhiw0d0ja6hx42jnkgdyp5hyy";
   };
 
+  wafConfigureFlags = stdenv.lib.optionals stdenv.isDarwin [ "--lv2dir=${placeholder "out"}/lib/lv2" ];
+
   nativeBuildInputs = [ pkgconfig wafHook ];
   buildInputs = [ gtk2 libsndfile python ];
 
@@ -17,6 +19,6 @@ stdenv.mkDerivation rec {
     description = "A plugin standard for audio systems";
     license = licenses.mit;
     maintainers = [ maintainers.goibhniu ];
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }

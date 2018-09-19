@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
     description = "‘Bad’ (potentially low quality) plug-ins for GStreamer";
 
     maintainers = [stdenv.lib.maintainers.raskin];
-    platforms = stdenv.lib.platforms.linux;
+    platforms = stdenv.lib.platforms.unix;
 
     license = stdenv.lib.licenses.lgpl2Plus;
   };

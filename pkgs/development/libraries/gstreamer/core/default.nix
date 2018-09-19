@@ -2,7 +2,7 @@
 , pkgconfig, gettext, gobject-introspection
 , bison, flex, python3, glib, makeWrapper
 , libcap,libunwind, darwin
-, lib
+, lib, fixDarwinDylibNames
 }:
 
 stdenv.mkDerivation rec {
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
   ];
   buildInputs =
        lib.optionals stdenv.isLinux [ libcap libunwind ]
-    ++ lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.CoreServices;
+    ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames darwin.apple_sdk.frameworks.CoreServices ];
 
   propagatedBuildInputs = [ glib ];
 

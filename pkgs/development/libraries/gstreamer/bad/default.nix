@@ -60,6 +60,8 @@ stdenv.mkDerivation rec {
 
   outputs = [ "out" "dev" ];
 
+  CXXFLAGS = stdenv.lib.optional stdenv.cc.isClang "-std=c++11";
+
   nativeBuildInputs = [ meson ninja pkgconfig python3 gettext ];
 
   buildInputs = [

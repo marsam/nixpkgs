@@ -29,6 +29,6 @@ stdenv.mkDerivation rec {
     homepage = https://sourceforge.net/projects/lrdf/;
     license = stdenv.lib.licenses.gpl2;
     maintainers = [ stdenv.lib.maintainers.marcweber ];
-    platforms = stdenv.lib.platforms.linux;
+    platforms = stdenv.lib.platforms.unix;
   };
 }

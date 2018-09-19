@@ -49,7 +49,7 @@ stdenv.mkDerivation rec {
     "-Dgtk_doc=true"
   ];
 
-  doCheck = true;
+  doCheck = !stdenv.isDarwin;
 
   passthru = {
     updateScript = gnome3.updateScript {

@@ -51,7 +51,7 @@ stdenv.mkDerivation rec {
     "--enable-gtk-doc"
   ];
 
-  doCheck = true;
+  doCheck = !stdenv.isDarwin;
 
   passthru = {
     updateScript = gnome3.updateScript {
@@ -63,6 +63,6 @@ stdenv.mkDerivation rec {
     description = "Library to handle UPnP IGD port mapping";
     homepage = http://www.gupnp.org/;
     license = licenses.lgpl21;
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }

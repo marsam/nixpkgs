@@ -77,7 +77,7 @@ stdenv.mkDerivation rec {
     "-Dgtk_doc=true"
   ];
 
-  doCheck = true;
+  doCheck = !stdenv.isDarwin;
 
   passthru = {
     updateScript = gnome3.updateScript {
@@ -89,6 +89,6 @@ stdenv.mkDerivation rec {
     homepage = http://www.gupnp.org/;
     description = "An implementation of the UPnP specification";
     license = licenses.lgpl2Plus;
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }
