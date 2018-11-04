@@ -18535,7 +18535,9 @@ with pkgs;
 
   pulseview = libsForQt5.callPackage ../applications/science/electronics/pulseview { };
 
-  puredata = callPackage ../applications/audio/puredata { };
+  puredata = callPackage ../applications/audio/puredata {
+    inherit (darwin.apple_sdk.frameworks) CoreServices CoreAudio AudioUnit AudioToolbox;
+  };
   puredata-with-plugins = plugins: callPackage ../applications/audio/puredata/wrapper.nix { inherit plugins; };
 
   puremapping = callPackage ../applications/audio/pd-plugins/puremapping { };
