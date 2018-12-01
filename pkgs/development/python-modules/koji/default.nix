@@ -1,26 +1,39 @@
-{ stdenv, fetchurl, buildPythonPackage, pycurl, six, rpm, dateutil }:
+{ stdenv, fetchurl, python, buildPythonPackage, isPy3k, pyopenssl, dateutil, requests, requests-kerberos, six, rpm, mock }:
 
 buildPythonPackage rec {
   pname = "koji";
-  version = "1.13.0";
-  format = "other";
+  version = "1.16.1";
+  format = "other"; # https://pagure.io/koji/issue/912
+
+  # disabled = isPy3k;
 
   src = fetchurl {
     url = "https://releases.pagure.org/koji/${pname}-${version}.tar.bz2";
-    sha256 = "18b18rcbdqqw33g7h20hf5bpbci2ixdi05yda1fvpv30c1kkzd8w";
+    sha256 = "01h84hpfax0hc26klza4xv2np7r4qc1588k1fpha10vy1m7q6775";
   };
 
-  propagatedBuildInputs = [ pycurl six rpm dateutil ];
+  # `rpm-py-installer` tries to download and build `rpm`, but since we use our
+  # `rpm` is not required anymore.
+  # prePatch = ''
+  #   substituteInPlace setup.py \
+  #     --replace "'rpm-py-installer'," "# 'rpm-py-installer'," \
+  #     --replace "requires.append('python-krbV')" "pass"
+  # '';
 
-  # Judging from SyntaxError
-  #disabled = isPy3k;
+  propagatedBuildInputs = [ pyopenssl dateutil requests requests-kerberos six rpm ];
+
+  checkInputs = [ mock ];
+
+  doCheck = false;
 
   makeFlags = "DESTDIR=$(out)";
 
   postInstall = ''
     mv $out/usr/* $out/
     cp -R $out/nix/store/*/* $out/
-    rm -rf $out/nix
+    mkdir -p $out/etc/systemd/system/
+    mv $out/*.service $out/etc/systemd/system/
+    rm -rf $out/nix $out/usr $out/sbin
   '';
 
   meta = {

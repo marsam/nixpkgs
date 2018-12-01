@@ -1,4 +1,4 @@
-{ stdenv, buildPythonApplication, buildPythonPackage, isPy3k, fetchurl, rpkg, offtrac, urlgrabber, pyopenssl, python_fedora }:
+{ stdenv, buildPythonApplication, buildPythonPackage, fetchurl, openidc-client, bugzilla, rpkg, six, mock, nose, freezegun }:
 
 let
   fedora_cert = buildPythonPackage rec {
@@ -15,16 +15,19 @@ let
   };
 in buildPythonApplication rec {
   pname = "fedpkg";
-  version = "1.29";
-
-  disabled = isPy3k;
+  version = "1.35";
 
   src = fetchurl {
     url = "https://releases.pagure.org/fedpkg/${pname}-${version}.tar.bz2";
-    sha256 = "1cpy5p1rp7w52ighz3ynvhyw04z86y8phq3n8563lj6ayr8pw631";
+    sha256 = "1n8z97689x1rgq1bg81cjl6pyxanp3y689zgacz1whr92yda8jzl";
   };
   patches = [ ./fix-paths.patch ];
-  propagatedBuildInputs = [ rpkg offtrac urlgrabber fedora_cert ];
+  propagatedBuildInputs = [ openidc-client bugzilla rpkg six ];
+
+  checkInputs = [ mock nose freezegun ];
+  checkPhase = ''
+    nosetests
+  '';
 
   meta = with stdenv.lib; {
     description = "Subclass of the rpkg project for dealing with rpm packaging";

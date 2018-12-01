@@ -1,18 +1,15 @@
 { stdenv, buildPythonPackage, isPy3k, fetchurl, six, pycurl, cccolutils
-, koji, rpmfluff }:
+, koji, rpmfluff, toPythonModule }:
 
 buildPythonPackage rec {
   pname = "rpkg";
-  version = "1.50";
-  name  = "${pname}-${version}";
-
+  version = "1.56";
   disabled = isPy3k;
 
   src = fetchurl {
-    url = "https://releases.pagure.org/rpkg/${name}.tar.gz";
-    sha256 = "0j83bnm9snr3m1mabw2cvd2r7d6kcnkzyz7b9p65fhcc3c7s3rvv";
+    url = "https://releases.pagure.org/rpkg/${pname}-${version}.tar.gz";
+    sha256 = "0aav3fca05497jdksjgf5abiyjpabwdrk223391dxwfx4chgmqh3";
   };
-
 
   propagatedBuildInputs = [ pycurl koji cccolutils six rpmfluff ];
 
