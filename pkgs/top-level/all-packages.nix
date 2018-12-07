@@ -5557,6 +5557,8 @@ in
 
   sudo = callPackage ../tools/security/sudo { };
 
+  sudo_pair = callPackage ../tools/admin/sudo_pair { };
+
   suidChroot = callPackage ../tools/system/suid-chroot { };
 
   sundtek = callPackage ../misc/drivers/sundtek { };
