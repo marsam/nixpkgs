@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
     description = "Simple xargs and apply replacement";
     homepage = https://github.com/chneukirchen/xe;
     license = licenses.publicDomain;
-    platforms = platforms.linux;
+    platforms = platforms.unix;
     maintainers = with maintainers; [ cstrahan ndowens ];
   };
 }
