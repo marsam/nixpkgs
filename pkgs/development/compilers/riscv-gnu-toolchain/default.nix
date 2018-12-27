@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, autoreconfHook, makeWrapper, curl }:
+{ stdenv, fetchFromGitHub, autoreconfHook, makeWrapper, flex, bison, curl, texinfo }:
 
 stdenv.mkDerivation rec {
   pname = "riscv-gnu-toolchain";
@@ -9,12 +9,13 @@ stdenv.mkDerivation rec {
     repo = "riscv-gnu-toolchain";
     rev = "v${version}";
     fetchSubmodules = true;
-    sha256 = "00b0n8kfpwn6m77n7sz51mdsrm75bykipcfs7nw354gback06hjz";
+    sha256 = "13hjmgdb9rx5icwc2ss0rxv41jj71x0if7mx3z5af3vdzgdkaj3i";
   };
 
-  # nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ flex bison texinfo ];
+
   buildInputs = [
-    curl
+    curl                        # TODO(marsam): remove it
   ];
 
   meta = with stdenv.lib; {
