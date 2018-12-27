@@ -7475,6 +7475,7 @@ in
 
   pyo3-pack = callPackage ../development/tools/rust/pyo3-pack { };
   rainicorn = callPackage ../development/tools/rust/rainicorn { };
+  riscv-gnu-toolchain = callPackage ../development/compilers/riscv-gnu-toolchain { };
   rustfmt = callPackage ../development/tools/rust/rustfmt { };
   rustracer = callPackage ../development/tools/rust/racer { };
   rustracerd = callPackage ../development/tools/rust/racerd { };
