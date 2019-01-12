@@ -1141,6 +1141,22 @@ self: super: {
   # Generate shell completions
   purescript = generateOptparseApplicativeCompletion "purs" super.purescript;
 
+  # https://github.com/phadej/tdigest/commit/e514e833ca16f7a6c9e0e5a148167d791d7c76cd
+  tdigest = overrideCabal super.tdigest (drv: {
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace tdigest.cabal \
+        --replace "tasty            >=0.11.0.4 && <1.2" "tasty            >=0.11.0.4 && <1.3"
+    '';
+  });
+
+  # https://github.com/phadej/insert-ordered-containers/commit/73fdf9c7a41ea7a02ee336cb01cb54f0ebc248f8
+  insert-ordered-containers = overrideCabal super.insert-ordered-containers (drv: {
+    postPatch = (drv.postPatch or "") + ''
+      substituteInPlace insert-ordered-containers.cabal \
+        --replace "tasty             >= 0.10.1.2 && <1.2" "tasty             >= 0.10.1.2 && <1.3"
+    '';
+  });
+
   # https://github.com/adinapoli/mandrill/pull/52
   mandrill = appendPatch super.mandrill (pkgs.fetchpatch {
     url = https://github.com/adinapoli/mandrill/commit/30356d9dfc025a5f35a156b17685241fc3882c55.patch;
