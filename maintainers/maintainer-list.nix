@@ -2406,6 +2406,11 @@
     github = "jmettes";
     name = "Jonathan Mettes";
   };
+  jmgrosen = {
+    email = "jmgrosen@gmail.com";
+    github = "jmgrosen";
+    name = "John Grosen";
+  };
   joachifm = {
     email = "joachifm@fastmail.fm";
     github = "joachifm";
