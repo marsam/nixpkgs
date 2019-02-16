@@ -20251,6 +20251,10 @@ in
     };
   };
 
+  spotifyd = callPackage ../applications/audio/spotifyd {
+    withPulseAudio = config.pulseaudio or true;
+  };
+
   libspotify = callPackage ../development/libraries/libspotify (config.libspotify or {});
 
   sourcetrail = callPackage ../development/tools/sourcetrail { };
