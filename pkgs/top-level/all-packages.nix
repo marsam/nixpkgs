@@ -9480,6 +9480,8 @@ in
 
   texi2mdoc = callPackage ../tools/misc/texi2mdoc { };
 
+  tflint = callPackage ../development/tools/analysis/tflint { };
+
   todoist = callPackage ../applications/misc/todoist { };
 
   todolist = callPackage ../applications/misc/todolist { };
