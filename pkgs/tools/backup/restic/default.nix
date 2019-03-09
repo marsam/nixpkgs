@@ -21,12 +21,12 @@ buildGoPackage rec {
   installPhase = ''
     mkdir -p \
       $bin/bin \
-      $bin/etc/bash_completion.d \
+      $bin/share/bash-completion/completions \
       $bin/share/zsh/vendor-completions \
       $bin/share/man/man1
     cp restic $bin/bin/
     $bin/bin/restic generate \
-      --bash-completion $bin/etc/bash_completion.d/restic.sh \
+      --bash-completion $bin/share/bash-completion/completions/restic \
       --zsh-completion $bin/share/zsh/vendor-completions/_restic \
       --man $bin/share/man/man1
   '';
