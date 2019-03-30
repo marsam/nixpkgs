@@ -9375,6 +9375,10 @@ in
 
   wasm-gc = callPackage ../development/interpreters/wasm-gc { };
 
+  lucet = callPackage ../development/interpreters/lucet {
+    stdenv = llvmPackages_latest.stdenv;
+    llvmPackages = llvmPackages_latest;
+  };
 
   ### DEVELOPMENT / MISC
 
