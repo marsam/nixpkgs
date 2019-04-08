@@ -51,7 +51,11 @@ let
 
     AR = "${stdenv'.cc.targetPrefix or ""}ar";
     CC = "${stdenv'.cc.targetPrefix or ""}cc";
-    CPP = if (stdenv'.cc.isClang or false) then "clang-cpp" else "cpp";
+    CPP = if (stdenv'.cc.isClang or false)
+          then if stdenv.isDarwin
+               then "cpp"
+               else "clang-cpp"
+          else "cpp";
     CXX = "${stdenv'.cc.targetPrefix or ""}c++";
     LD = "${stdenv'.cc.targetPrefix or ""}ld";
     STRIP = "${stdenv'.cc.targetPrefix or ""}strip";
