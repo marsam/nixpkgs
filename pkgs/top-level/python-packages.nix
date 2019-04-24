@@ -5350,7 +5350,13 @@ in {
 
   urlgrabber = callPackage ../development/python-modules/urlgrabber {};
 
-  urwid = callPackage ../development/python-modules/urwid {};
+  urwid_1 = callPackage ../development/python-modules/urwid/1.nix {};
+
+  urwid_2 = callPackage ../development/python-modules/urwid {};
+
+  urwid = self.urwid_1;
+
+  urwid_readline = callPackage ../development/python-modules/urwid_readline {};
 
   user-agents = callPackage ../development/python-modules/user-agents { };
 
