@@ -8548,6 +8548,8 @@ in
 
   srelay = callPackage ../tools/networking/srelay { };
 
+  truffleruby = callPackage ../development/interpreters/truffleruby { };
+
   xidel = callPackage ../tools/text/xidel { };
 
 
