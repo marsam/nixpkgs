@@ -4919,6 +4919,8 @@ in
 
   memo = callPackage ../applications/misc/memo { };
 
+  memory-profiler = callPackage ../applications/misc/memory-profiler { } ;
+
   mencal = callPackage ../applications/misc/mencal { } ;
 
   metamorphose2 = callPackage ../applications/misc/metamorphose2 { };
