@@ -3999,6 +3999,10 @@ in
 
   humanfriendly = with python3Packages; toPythonApplication humanfriendly;
 
+  hunter = callPackage ../tools/misc/hunter {
+    inherit (darwin.apple_sdk.frameworks) Security;
+  };
+
   hwinfo = callPackage ../tools/system/hwinfo { };
 
   hybridreverb2 = callPackage ../applications/audio/hybridreverb2 { };
