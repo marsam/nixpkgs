@@ -2087,6 +2087,8 @@ in {
 
   miniupnpc = callPackage ../development/python-modules/miniupnpc {};
 
+  mitogen = callPackage ../development/python-modules/mitogen { };
+
   mixpanel = callPackage ../development/python-modules/mixpanel { };
 
   mpyq = callPackage ../development/python-modules/mpyq { };
