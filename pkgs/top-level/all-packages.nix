@@ -10476,6 +10476,8 @@ in
 
   snowman = qt5.callPackage ../development/tools/analysis/snowman { };
 
+  sorbet-bin = callPackage ../development/tools/analysis/sorbet-bin {  };
+
   sparse = callPackage ../development/tools/analysis/sparse { };
 
   speedtest-cli = with python3Packages; toPythonApplication speedtest-cli;
