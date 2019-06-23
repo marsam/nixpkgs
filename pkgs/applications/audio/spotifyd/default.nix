@@ -5,22 +5,17 @@
 }:
 
 rustPlatform.buildRustPackage rec {
-  name = "spotifyd-${version}";
-  version = "0.2.4";
+  pname = "spotifyd";
+  version = "0.2.11";
 
   src = fetchFromGitHub {
     owner = "Spotifyd";
-    repo = "spotifyd";
-    rev = "v${version}";
-    sha256 = "0nmi33wvagmasxb59jwhlgdqlh8gfmqgwib16k1wx885qhx9yg30";
+    repo = pname;
+    rev = version;
+    sha256 = "1iybk9xrrvhrcl2xl5r2xhyn1ydhrgwnnb8ldhsw5c16b32z03q1";
   };
 
-  # buildRustPackage currently seems to have some problems with [replace]
-  # directives in Cargo files (see #30742 and #47172), so don't use the
-  # replacement.
-  cargoPatches = [ ./noavxcrypto.patch ];
-
-  cargoSha256 = "09vial0psmh39j20ikmfldidl505jnpfnqa8ybszrf2pvrhszsgq";
+  cargoSha256 = "1dzg4sb95ixjfhx6n4w2rgrq4481vw01nsdrbm746mz7nm71csk3";
 
   cargoBuildFlags = [
     "--no-default-features"
@@ -28,7 +23,8 @@ rustPlatform.buildRustPackage rec {
     "${stdenv.lib.optionalString withALSA "alsa_backend,"}${stdenv.lib.optionalString withPulseAudio "pulseaudio_backend,"}${stdenv.lib.optionalString withPortAudio "portaudio_backend,"}"
   ];
 
-  buildInputs = [ pkgconfig openssl ]
+  nativeBuildInputs = [ pkgconfig ];
+  buildInputs = [ openssl ]
     ++ stdenv.lib.optional withALSA alsaLib
     ++ stdenv.lib.optional withPulseAudio libpulseaudio
     ++ stdenv.lib.optional withPortAudio portaudio;
