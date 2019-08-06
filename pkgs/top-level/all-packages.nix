@@ -6228,6 +6228,10 @@ in
 
   skim = callPackage ../tools/misc/skim { };
 
+  sear = callPackage ../tools/security/sear {
+    inherit (darwin.apple_sdk.frameworks) Security;
+  };
+
   sec = callPackage ../tools/admin/sec { };
 
   seccure = callPackage ../tools/security/seccure { };
