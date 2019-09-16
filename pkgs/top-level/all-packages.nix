@@ -20796,7 +20796,9 @@ in
 
   telepathy-idle = callPackage ../applications/networking/instant-messengers/telepathy/idle {};
 
-  tendermint = callPackage ../tools/networking/tendermint {};
+  tendermint = callPackage ../tools/networking/tendermint {
+    buildGoModule = buildGo112Module;
+  };
 
   termdown = (newScope pythonPackages) ../applications/misc/termdown { };
 
