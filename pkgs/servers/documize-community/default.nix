@@ -1,6 +1,6 @@
-{ lib, buildGoPackage, fetchFromGitHub, go-bindata, go-bindata-assetfs }:
+{ lib, buildGoModule, fetchFromGitHub, go-bindata, go-bindata-assetfs }:
 
-buildGoPackage rec {
+buildGoModule rec {
   pname = "documize-community";
   version = "3.3.0";
 
@@ -15,24 +15,9 @@ buildGoPackage rec {
 
   buildInputs = [ go-bindata-assetfs go-bindata ];
 
-  buildPhase = ''
-    runHook preBuild
+  subPackages = ["edition"];
 
-    pushd go/src/github.com/documize/community
-    go build -gcflags="all=-trimpath=$GOPATH" -o bin/documize ./edition/community.go
-    popd
-
-    runHook postBuild
-  '';
-
-  installPhase = ''
-    runHook preInstall
-
-    mkdir -p $bin/bin
-    cp go/src/github.com/documize/community/bin/documize $bin/bin
-
-    runHook postInstall
-  '';
+  modSha256 = "sha256:0s5p37lrlmkm0813gsmvngxiq5hqwsqrihcyswq758rw3viqfawh";
 
   meta = with lib; {
     description = "Open source Confluence alternative for internal & external docs built with Golang + EmberJS";
