@@ -571,6 +571,8 @@ in
 
   aj-snapshot  = callPackage ../applications/audio/aj-snapshot { };
 
+  akku = callPackage ../tools/package-management/akku {};
+
   albert = libsForQt5.callPackage ../applications/misc/albert {};
 
   alacritty = callPackage ../applications/misc/alacritty {
