@@ -9021,6 +9021,8 @@ in
 
   kona = callPackage ../development/interpreters/kona {};
 
+  loko = callPackage ../development/interpreters/loko { };
+
   lolcode = callPackage ../development/interpreters/lolcode { };
 
   love_0_7 = callPackage ../development/interpreters/love/0.7.nix { lua=lua5_1; };
