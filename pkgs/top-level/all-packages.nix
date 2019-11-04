@@ -15692,6 +15692,8 @@ in
 
   thanos = callPackage ../servers/monitoring/thanos { };
 
+  tikv = callPackage ../servers/nosql/tikv { };
+
   inherit (callPackages ../servers/http/tomcat { })
     tomcat7
     tomcat8
