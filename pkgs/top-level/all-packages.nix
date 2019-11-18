@@ -9739,6 +9739,8 @@ in
 
   coan = callPackage ../development/tools/analysis/coan { };
 
+  comby = callPackage ../development/tools/comby { };
+
   compile-daemon = callPackage ../development/tools/compile-daemon { };
 
   complexity = callPackage ../development/tools/misc/complexity { };
