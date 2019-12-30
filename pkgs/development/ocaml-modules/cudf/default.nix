@@ -18,6 +18,8 @@ stdenv.mkDerivation rec {
   ];
 
   makeFlags = [
+    "all"
+    "opt"
     "OCAMLLIBDIR=$(out)/lib"
     "BINDIR=$(out)/bin"
     "LIBDIR=$(out)/lib"
