@@ -14,6 +14,6 @@ jobs:
       : github.repository_owner  'NixOS'
     steps:
     - uses: actions/labeler@v3
-      with:
+        :
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         sync-labels:     ,
